@@ -1,0 +1,181 @@
+PROGRAM FOR RECTANGULAR WINDOW
+
+
+clear all;
+clc;
+disp('design of fir low pass filter using window function');
+n=input(' enter number of sample = ');
+w=input(' enter the cut of frequency = ');
+n=n-1;
+%Low Pass Filter
+disp('LPF using rectangular window');
+lpf=fir1(n,w/pi,rectwin(n+1));
+[h,w1]=freqz(lpf,1,256);
+m=20*log(abs(h));
+subplot(2,2,1);
+plot(w1/pi,m);
+ylabel('gain in dB');
+xlabel('normalized freq');
+title('low pass filter');
+title('LPF using rectangular window');
+% High Pass filter
+disp('HPF using rectangular window');
+hpf=fir1(n,w/pi,'high',rectwin(n+1));
+[h1,w2]=freqz(hpf,1,256);
+m1=20*log(abs(h1));
+subplot(2,2,2);
+plot(w2/pi,m1);
+ylabel('gain in dB');
+xlabel('normalized freq');
+title('High pass filter');
+title('HPF using rectangular window');
+% Band Pass filter
+wc1=input(' Enter the first cut of frequency = ');
+wc2=input(' Enter the second cut of frequency= ');
+wn=[wc1 wc2];
+disp('BPF using rectangular window');
+bpf=fir1(n,wn/pi,'bandpass',rectwin(n+1));
+[h2,w3]=freqz(bpf,1,256);
+m2=20*log(abs(h2));
+subplot(2,2,3);
+plot(w3/pi,m2);
+ylabel('gain in dB');
+xlabel('normalized freq');
+title('Band pass filter');
+title('BPF using rectangular window');
+% Band stop filter
+wc3=input(' Enter the first cut of frequency = ');
+wc4=input(' Enter the second cut of frequency = ');
+wn1=[wc3 wc4];
+disp('BSF using rectangular window');
+bsf=fir1(n,wn1/pi,'stop',rectwin(n+1));
+[h3,w4]=freqz(bsf,1,256);
+m3=20*log(abs(h3));
+subplot(2,2,4);
+plot(w4/pi,m3);
+ylabel('gain in dB');
+xlabel('normalized freq');
+title('Band Stop filter');title('BSF using rectangular window');
+
+
+
+
+
+PROGRAM FOR HAMMING WINDOW
+
+clear all;
+clc;
+disp('design of fir low pass filter using window function');
+n=input('enter number of sample=');
+w=input('enter the cut of frequency=');
+n=n-1;
+%Low Pass Filter
+disp('LPF using Hamming window');
+lpf=fir1(n,w/pi,hamming(n+1));
+[h,w1]=freqz(lpf,1,256);
+m=20*log(abs(h));
+subplot(2,2,1);
+plot(w1/pi,m);
+ylabel('gain in dB');
+xlabel('normalized freq');
+title('low pass filter');
+title('LPF using Hamming window');
+% High Pass Filter
+disp('HPF using Hamming window');
+hpf=fir1(n,w/pi,'high',hamming(n+1));
+[h1,w2]=freqz(hpf,1,256);
+m1=20*log(abs(h1));
+subplot(2,2,2);
+plot(w2/pi,m1);
+ylabel('gain in dB');
+xlabel('normalized freq');
+title('High pass filter');
+title('HPF using Hamming window');
+%Band Pass Filter
+wc1=input('enter the first cut of frequency');
+wc2=input('enter the second cut of frequency');
+wn=[wc1 wc2];
+disp('Bpf using Hamming window');
+bpf=fir1(n,wn/pi,'bandpass',Hamming(n+1));
+[h2,w3]=freqz(bpf,1,256);
+m2=20*log(abs(h2));
+subplot(2,2,3);
+plot(w3/pi,m2);
+ylabel('gain in dB');
+xlabel('normalized freq');
+title('Band pass filter');
+title('BPF using Hamming window');
+%Band Stop Filter
+wc3=input('enter the first cut of frequency');
+wc4=input('enter the second cut of frequency');
+wn1=[wc3 wc4];
+disp('BSF using Hamming window');
+bsf=fir1(n,wn1/pi,'stop',Hamming(n+1));
+[h3,w4]=freqz(bsf,1,256);
+m3=20*log(abs(h3));
+subplot(2,2,4);
+plot(w4/pi,m3);
+ylabel('gain in dB');
+xlabel('normalized freq');
+title('Stop pass filter');title('BSF using Hamming window');
+
+
+
+
+PROGRAM FOR HANNING WINDOW
+
+clear all;
+clc;
+disp('design of fir low pass filter using window function');
+n=input('enter number of sample=');
+w=input('enter the cut of frequency=');
+n=n-1;
+ %Low Pass Filter
+disp('LPF using Hanning window');
+lpf=fir1(n,w/pi,hann(n+1));
+[h,w1]=freqz(lpf,1,256);
+m=20*log(abs(h));
+subplot(2,2,1);
+plot(w1/pi,m);
+ylabel('gain in dB');
+xlabel('normalized freq');
+title('low pass filter');
+title('LPF using Hanning window');
+ %High Pass Filter
+disp('HPF using Hanning window');
+hpf=fir1(n,w/pi,'high',hann(n+1));
+[h1,w2]=freqz(hpf,1,256);
+m1=20*log(abs(h1));
+subplot(2,2,2);
+plot(w2/pi,m1);
+ylabel('gain in dB');
+xlabel('normalized freq');
+title('High pass filter');
+title('HPF using Hanning window');
+%Band Pass Filter
+wc1=input('enter the first cut of frequency=');
+wc2=input ('enter the second cut of frequency=');
+wn=[wc1 wc2];
+disp ('BPF using Hanning window');
+bpf=fir1(n,wn/pi,'bandpass',hann(n+1));
+[h2,w3]=freqz(bpf,1,256);
+m2=20*log(abs(h2));
+subplot(2,2,3);
+plot(w3/pi,m2);
+ylabel('gain in dB');
+xlabel('normalized freq');
+title('Band pass filter');
+title('BPF using Hanning window');
+%Band Stop Filter
+wc3=input('enter the first cut of frequency=');
+wc4=input('enter the second cut of frequency=');
+wn1=[wc3 wc4];
+disp('BSF using Hanning window');
+bsf=fir1(n,wn1/pi,'stop',hann(n+1));
+[h3,w4]=freqz(bsf,1,256);
+m3=20*log(abs(h3));
+subplot(2,2,4);
+plot(w4/pi,m3);
+ylabel('gain in dB');
+xlabel('normalized freq');
+title('Stop pass filter');title('BSF using Hanning window')
